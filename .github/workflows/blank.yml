@@ -19,5 +19,5 @@ jobs:
 
     - name: Display github event details
       run: |
-        echo ${{ github.event.issue.title }}
+        echo ${{ github.event.issue.title | sed 's/[Dd]eploy //g' }}
         cat $GITHUB_EVENT_PATH

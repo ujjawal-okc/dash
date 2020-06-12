@@ -11,9 +11,6 @@ jobs:
     runs-on: ubuntu-18.04
     
     if: startsWith(github.event.issue.title, 'deploy')
-    
-    env:
-      DEPLOY_BRANCH: ${{ echo github.event.issue.title | sed 's/[Dd]eploy //g' }}
       
     steps:
     

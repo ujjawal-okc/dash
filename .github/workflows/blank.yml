@@ -15,20 +15,20 @@ jobs:
     steps:
     
     - name: Environment
-      run: echo "::set-env name=GITHUB_BRANCH::$(echo ${{ github.event.issue.title }} | sed 's/[Dd]eploy //g')"
+      run: echo "::set-env name=GIT_BRANCH::$(echo ${{ github.event.issue.title }} | sed 's/[Dd]eploy //g')"
       env:
         ISSUE_TITLE: ${{ github.event.issue.title }}
         
     - name: Display github event details
       run: |
         echo $ISSUE_TITLE | sed 's/[Dd]eploy //g'
-        echo $GITHUB_BRANCH
+        echo $GIT_BRANCH
       env:
         ISSUE_TITLE: ${{ github.event.issue.title }}
 
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        ref: $GITHUB_BRANCH
+        ref: $GIT_BRANCH
 
 

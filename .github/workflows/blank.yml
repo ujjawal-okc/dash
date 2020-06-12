@@ -15,7 +15,6 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Display github event details
-      env:
-        events: ${{ github.job }}
       run: |
-        cat $events
+        echo $GITHUB_EVENT_PATH
+        cat $GITHUB_EVENT_PATH

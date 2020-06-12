@@ -11,15 +11,16 @@ jobs:
     runs-on: ubuntu-18.04
     
     if: startsWith(github.event.issue.title, 'deploy')
+    
+    env:
+      DEPLOY_BRANCH: ${{ echo github.event.issue.title | sed 's/[Dd]eploy //g' }}
       
     steps:
 
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        ref: ${ echo feature }
-      env:
-        ISSUE_TITLE: ${{ github.event.issue.title }}
+        ref: $DEPLOY_BRANCH
 
     - name: Display github event details
       run: |

@@ -15,10 +15,7 @@ jobs:
     steps:
     
     - name: Environment
-      run: |
-        export GITHUB_BRANCH="${ echo $ISSUE_TITLE | sed 's/[Dd]eploy //g' }"
-      env:
-        ISSUE_TITLE: ${{ github.event.issue.title }}
+      run: echo "::set-env name=GITHUB_BRANCH::yellow"
 
     - name: Checkout
       uses: actions/checkout@v2

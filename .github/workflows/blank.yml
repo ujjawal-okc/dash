@@ -22,7 +22,7 @@ jobs:
     - name: Display github event details
       run: |
         echo $ISSUE_TITLE | sed 's/[Dd]eploy //g'
-        cat $GITHUB_BRANCH
+        echo $GITHUB_BRANCH
       env:
         ISSUE_TITLE: ${{ github.event.issue.title }}
 

@@ -15,7 +15,9 @@ jobs:
     steps:
     
     - name: Environment
-      run: echo "::set-env name=GITHUB_BRANCH::${ github.event.issue.title }"
+      run: echo "::set-env name=GITHUB_BRANCH::${ $ISSUE_TITLE }"
+      env:
+        ISSUE_TITLE: ${{ github.event.issue.title }}
 
     - name: Checkout
       uses: actions/checkout@v2

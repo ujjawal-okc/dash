@@ -16,6 +16,6 @@ jobs:
 
     - name: Display github event details
       env:
-        events: ${{ github.event }}
+        events: ${{ github.job }}
       run: |
         cat $events

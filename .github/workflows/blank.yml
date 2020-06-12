@@ -19,6 +19,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        ref: ${{ github.event.issue.title }}
+        ref: $(echo ${{ github.event.issue.title }} | sed 's/[Dd]eploy //g')
 
 

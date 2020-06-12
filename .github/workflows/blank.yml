@@ -16,7 +16,7 @@ jobs:
     
     - name: Environment
       run: |
-        echo "::set-env name=GITHUB_BRANCH::${ echo $ISSUE_TITLE | sed 's/[Dd]eploy //g' }"
+        export GITHUB_BRANCH="${ echo $ISSUE_TITLE | sed 's/[Dd]eploy //g' }"
       env:
         ISSUE_TITLE: ${{ github.event.issue.title }}
 

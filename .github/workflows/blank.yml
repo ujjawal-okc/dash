@@ -20,6 +20,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        ref: abc
+        ref: "$( echo $GIT_BRANCH )"
 
 

@@ -15,7 +15,7 @@ jobs:
     steps:
     
     - name: Environment
-      run: echo "::set-env name=GITHUB_BRANCH::yellow"
+      run: echo "::set-env name=GITHUB_BRANCH::${ echo yellow }"
 
     - name: Checkout
       uses: actions/checkout@v2

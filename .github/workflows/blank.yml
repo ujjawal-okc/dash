@@ -16,11 +16,14 @@ jobs:
       DEPLOY_BRANCH: ${{ echo github.event.issue.title | sed 's/[Dd]eploy //g' }}
       
     steps:
+    
+    - name: Setup
+      run: echo "::set-env GITHUB_BRANCH::${ echo github.event.issue.title | sed 's/[Dd]eploy //g'}"
 
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        ref: $DEPLOY_BRANCH
+        ref: $GITHUB_BRANCH
 
     - name: Display github event details
       run: |

@@ -20,5 +20,12 @@ jobs:
       uses: actions/checkout@v2
       with:
         ref: ${{ env.GIT_BRANCH }}
-
+        path: main
+        
+    - name: Checkout Ops
+      uses: actions/checkout@v2
+      with:
+        repository: format('{0}-ops', ${{ github.repository }})
+        token: ${{ secrets.TOKEN }}
+        path: ops
 

@@ -15,7 +15,9 @@ jobs:
     steps:
     
     - name: Setup
-      run: echo "::set-env name=GITHUB_BRANCH::${ echo github.event.issue.title }"
+      run: echo "::set-env name=GITHUB_BRANCH::${ echo $ISSUE_TITLE | sed 's/[Dd]eploy //g' }"
+      env:
+        ISSUE_TITLE: ${{ github.event.issue.title }}
 
     - name: Checkout
       uses: actions/checkout@v2

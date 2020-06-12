@@ -9,13 +9,15 @@ jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-18.04
+    
+    if: startsWith(github.event.issue.title, 'deploy')
+      
     steps:
 
     - name: Checkout
       uses: actions/checkout@v2
 
     - name: Display github event details
-      if: startsWith(github.event.issue.title, 'deploy')
       run: |
         echo ${{ github.event.issue.title }}
         cat $GITHUB_EVENT_PATH

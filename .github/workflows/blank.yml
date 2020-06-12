@@ -16,5 +16,5 @@ jobs:
 
     - name: Display github event details
       run: |
-        echo $GITHUB_EVENT_PATH
+        echo ${{ github.event.issue.title }}
         cat $GITHUB_EVENT_PATH

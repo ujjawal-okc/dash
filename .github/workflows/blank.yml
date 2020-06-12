@@ -20,6 +20,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        ref: ${{ GIT_BRANCH }}
+        ref: ${{ github.event.issue.title }}
 
 

@@ -30,10 +30,10 @@ jobs:
       
     steps:
     - name: Environment
-      if: startsWith(github.event.issue.title, 'deploy')
+      #if: startsWith(github.event.issue.title, 'deploy')
       run: |
-        echo "::set-env name=GIT_BRANCH::$(echo ${{ github.event.issue.title }} | sed 's/^deploy //I')"
-        echo ${{ 'env.GITHUB_ACTION' }}
+        #echo "::set-env name=GIT_BRANCH::$(echo ${{ github.event.issue.title }} | sed 's/^deploy //I')"
+        echo ${{ env.GITHUB_REPO }}
 
     - name: Checkout
       uses: actions/checkout@v2

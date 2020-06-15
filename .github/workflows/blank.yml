@@ -10,6 +10,9 @@ on:
     types:
       - opened
       - synchronize
+  push:
+    branches: 
+      - master
 
 jobs:
   setup-build-publish-deploy:

@@ -16,6 +16,7 @@ on:
 
 env:
   GITHUB_REPO: ${{ github.event.repository.name }}
+  GITHUB_EVENT: ${{ github.event_name }}
   
 jobs:
   setup-build-publish-deploy:

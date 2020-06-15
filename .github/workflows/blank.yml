@@ -14,6 +14,9 @@ on:
     branches: 
       - master
 
+env:
+  GITHUB_REPO: ${{ github.event.repository.name }}
+  
 jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy

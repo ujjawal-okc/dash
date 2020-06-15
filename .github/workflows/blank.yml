@@ -17,6 +17,11 @@ on:
 env:
   GITHUB_REPO: ${{ github.event.repository.name }}
   GITHUB_EVENT: ${{ github.event_name }}
+  GITHUB_REF: ${{ github.ref }}
+  GITHUB_HEAD_REF: ${{ github.head_ref }}
+  GITHUB_BASE_REF: ${{ github.base_ref }}
+  GITHUB_WORKSPACE: ${{ github.workspace }}
+  GITHUB_ACTION: ${{ github.action }}
   
 jobs:
   setup-build-publish-deploy:

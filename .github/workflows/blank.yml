@@ -4,16 +4,18 @@ on:
   issues:
     types:
       - opened
+  pull_request:
+    branches:
+      - releases/**
 
 jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-18.04
-   
-    if: startsWith(github.event.issue.title, 'deploy')
       
     steps:
     - name: Environment
+      if: startsWith(github.event.issue.title, 'deploy')
       run: echo "::set-env name=GIT_BRANCH::$(echo ${{ github.event.issue.title }} | sed 's/^deploy //I')"
 
     - name: Checkout

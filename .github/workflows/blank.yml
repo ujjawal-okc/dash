@@ -6,7 +6,7 @@ on:
       - opened
   pull_request:
     branches:
-      - releases/**
+      - master
     types:
       - opened
       - synchronize

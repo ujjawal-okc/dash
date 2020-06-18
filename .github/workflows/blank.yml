@@ -11,9 +11,6 @@ on:
       - opened
       - synchronize
       - closed
-  push:
-    branches: 
-      - master
 
 env:
   GITHUB_REPO: ${{ github.event.repository.name }}
@@ -33,7 +30,7 @@ jobs:
     - name: Environment
       #if: startsWith(github.event.issue.title, 'deploy')
       run: |
-        #echo "::set-env name=GIT_BRANCH::$(echo ${{ github.event.issue.title }} | sed 's/^deploy //I')"
+        #echo "::set-env name=TAG::$(echo $GITHUB_HEAD_REF | sed 's/^releases\///I')"
         echo ${{ env.GITHUB_REPO }}
         echo ${{ github.event.action }}
 

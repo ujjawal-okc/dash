@@ -30,7 +30,7 @@ jobs:
     - name: Environment
       #if: startsWith(github.event.issue.title, 'deploy')
       run: |
-        #echo "::set-env name=TAG::$(echo $GITHUB_HEAD_REF | sed 's/^releases\///I')"
+        #echo "::set-env name=TAG::$(echo ${{ env.GITHUB_HEAD_REF }} | sed 's/^releases\///I')"
         echo ${{ env.TAG }}
         echo ${{ github.event.action }}
 

@@ -10,6 +10,7 @@ on:
     types:
       - opened
       - synchronize
+      - closed
   push:
     branches: 
       - master
@@ -34,6 +35,7 @@ jobs:
       run: |
         #echo "::set-env name=GIT_BRANCH::$(echo ${{ github.event.issue.title }} | sed 's/^deploy //I')"
         echo ${{ env.GITHUB_REPO }}
+        echo ${{ github.event.action }}
 
     - name: Checkout
       uses: actions/checkout@v2

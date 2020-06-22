@@ -1,0 +1,19 @@
+name: Close Issues
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.issue.title, 'deploy')
+
+    steps:
+    - name: Close issue
+      uses: peter-evans/close-issue@v1
+      with:
+        comment: |
+          Deployed branch
+          Auto-closing this issue.

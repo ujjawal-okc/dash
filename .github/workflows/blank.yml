@@ -11,6 +11,9 @@ on:
       - opened
       - synchronize
       - closed
+  push:
+    branches:
+      - master
 
 env:
   GITHUB_REPO: ${{ github.event.repository.name }}
@@ -47,7 +50,7 @@ jobs:
         fileName: 'ssh_key'
         encodedString: ${{ secrets.SSH_KEY }}
         
-    - run: echo "::set-env name=SSH_KEY::$(cat ${{ steps.write_file.outputs.filePath }}"
+    - run: echo "::set-env name=SSH_KEY::$(cat ${{ steps.write_file.outputs.filePath }})"
         
     - name: Checkout Ops
       uses: actions/checkout@v2

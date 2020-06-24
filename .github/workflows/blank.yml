@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - master
+      - release/**
     types:
       - opened
       - synchronize
@@ -14,6 +15,7 @@ on:
   push:
     branches:
       - master
+      - release/**
 
 env:
   GITHUB_REPO: ${{ github.event.repository.name }}
@@ -33,7 +35,7 @@ jobs:
     - name: Environment
       #if: startsWith(github.event.issue.title, 'deploy')
       run: |
-        #echo "::set-env name=TAG::$(echo ${{ env.GITHUB_HEAD_REF }} | sed 's/^releases\///I')"
+        echo "::set-env name=TAG::${{ github.sha::8 }}"
         echo ${{ env.TAG }}
         echo ${{ github.event.action }}
 

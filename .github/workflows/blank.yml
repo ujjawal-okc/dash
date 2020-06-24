@@ -35,7 +35,7 @@ jobs:
     - name: Environment
       #if: startsWith(github.event.issue.title, 'deploy')
       run: |
-        echo "::set-env name=TAG::${{ github.sha::8 }}"
+        echo "::set-env name=TAG::${GITHUB_SHA::8}"
         echo ${{ env.TAG }}
         echo ${{ github.event.action }}
 

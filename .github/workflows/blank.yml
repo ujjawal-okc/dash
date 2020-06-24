@@ -50,12 +50,13 @@ jobs:
         fileName: 'ssh_key'
         encodedString: ${{ secrets.SSH_KEY }}
         
-    - run: echo "::set-env name=SSH_KEY::$(cat ${{ steps.write_file.outputs.filePath }})"
+    - id: ssh
+      run: echo "::set-output name=ssh_key::$(cat ${{ steps.write_file.outputs.filePath }})"
         
     - name: Checkout Ops
       uses: actions/checkout@v2
       env:
-        SSH_KEY: ${{ env.SSH_KEY }}
+        SSH_KEY: ${{ steps.ssh.outputs.ssh_key }}
       with:
         repository: ${{ format('{0}-ops', github.repository) }}
         token: ${{ secrets.TOKEN }}

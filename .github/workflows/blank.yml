@@ -43,15 +43,16 @@ jobs:
         ref: ${{ env.GIT_BRANCH }}
         path: main
         
-    - name: SSH File
-      id: write_file
-      uses: timheuer/base64-to-file@v1.0.3
+    - name: Docker Build
+      uses: docker/build-push-action@v1
       with:
-        fileName: 'ssh_key'
-        encodedString: ${{ secrets.SSH_KEY }}
-        
-    - id: ssh
-      run: echo "::set-output name=ssh_key::$(cat ${{ steps.write_file.outputs.filePath }})"
+        username: _json_key
+        password: ${{ secrets.TOKEN }}
+        registry: gcr.io
+        repository: nginx
+        dockerfile: Dockerfile
+        tag_with_sha: true
+        build_args: SSH_PRIVATE_KEY=${{ secrets.SSH_KEY }}
         
     - name: Checkout Ops
       uses: actions/checkout@v2

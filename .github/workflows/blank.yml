@@ -47,7 +47,6 @@ jobs:
   job2:
     name: Job2
     runs-on: ubuntu-18.04
-    if: env.GITHUB_REPO
       
     steps:
     - name: Checkout Ops

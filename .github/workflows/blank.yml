@@ -40,7 +40,7 @@ jobs:
         echo ${{ github.event.action }}
 
     - name: Checkout
-      if: env.TAG
+      if: env.TAG && env.TAG
       uses: actions/checkout@v2
       with:
         ref: ${{ env.GIT_BRANCH }}

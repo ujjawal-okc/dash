@@ -47,6 +47,9 @@ jobs:
   job2:
     name: Job2
     runs-on: ubuntu-18.04
+  
+    if: needs.job1.outputs.can-build
+    needs: [job1]
       
     steps:
     - name: Checkout Ops

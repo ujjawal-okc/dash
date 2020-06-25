@@ -38,8 +38,7 @@ jobs:
     - name: Environment
       id: id1
       run: |
-        echo "::set-output name=staging::false"
-        echo "::set-output name=alpha::false"
+        echo a
 
     - name: Checkout
       uses: actions/checkout@v2

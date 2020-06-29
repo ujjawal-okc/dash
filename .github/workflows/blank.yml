@@ -38,7 +38,7 @@ jobs:
     - name: Environment
       id: id1
       run: |
-        echo a
+        echo "::set-env name=tag::${GITHUB_SHA::8}$(date +%FT%H-%M)"
 
     - name: Checkout
       uses: actions/checkout@v2

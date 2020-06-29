@@ -1,7 +1,21 @@
 name: Build and Deploy
 
 on:
-  push
+  issues:
+    types:
+      - opened
+  pull_request:
+    branches:
+      - master
+      - release/**
+    types:
+      - opened
+      - synchronize
+      - closed
+  push:
+    branches: 
+      - master
+      - release/**
 
 env:
   GITHUB_REPO: ${{ github.event.repository.name }}

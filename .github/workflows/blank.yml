@@ -1,17 +1,6 @@
 name: Build and Deploy
 
 on:
-  issues:
-    types:
-      - opened
-  pull_request:
-    branches:
-      - master
-      - release/**
-    types:
-      - opened
-      - synchronize
-      - closed
   push:
     branches:
       - master
@@ -30,27 +19,12 @@ jobs:
   job1:
     name: Job1
     runs-on: ubuntu-18.04
-    
-    outputs:
-      can-build: ${{ steps.id1.outputs.staging || steps.id1.outputs.alpha }}
-      
-    steps:
-    - name: Environment
-      id: id1
-      run: |
-        echo "::set-env name=tag::${GITHUB_SHA::8}$(date +%FT%H-%M)"
-
-    - name: Checkout
-      uses: actions/checkout@v2
-
-  job2:
-    name: Job2
-    runs-on: ubuntu-18.04
-  
-    if: needs.job1.outputs.can-build
-    needs: [job1]
       
     steps:
     - name: Checkout Ops
       uses: actions/checkout@v2
+      
+    - name: Environment
+      run: |
+        echo "::set-env name=tag::${GITHUB_SHA::8}$(date +%FT%H-%M)"
 

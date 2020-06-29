@@ -7,7 +7,6 @@ on:
   pull_request:
     branches:
       - master
-      - release/**
     types:
       - opened
       - synchronize
@@ -15,7 +14,6 @@ on:
   push:
     branches: 
       - master
-      - release/**
 
 env:
   GITHUB_REPO: ${{ github.event.repository.name }}
@@ -37,5 +35,5 @@ jobs:
       
     - name: Environment
       run: |
-        echo "::set-env name=tag::${GITHUB_SHA::8}$(date +%FT%H-%M)"
+        echo "::set-env name=tag::${GITHUB_SHA::8}"
 

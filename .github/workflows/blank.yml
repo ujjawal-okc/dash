@@ -23,7 +23,7 @@ env:
   GITHUB_BASE_REF: ${{ github.base_ref }}
   GITHUB_WORKSPACE: ${{ github.workspace }}
   GITHUB_ACTION: ${{ github.action }}
-  GCR_REPO: format('{0}/{1}', secrets.GCR_PROJECT, github.event.repository.name)
+  GCR_REPO: ${{ format('{0}/{1}', secrets.GCR_PROJECT, github.event.repository.name) }}
   
 jobs:
   job1:

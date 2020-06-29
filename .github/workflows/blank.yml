@@ -33,7 +33,7 @@ jobs:
     steps:
     - name: Environment
       run: |
-        echo "::set-env name=tag::${GITHUB_SHA::8}-$(date +%FT%H-%M)"
+        echo "::set-env name=tag::$(echo ${{ github.base_ref }}-$(date +%FT%H-%M) | sed 's/^m\///I')"
   
     - name: Checkout Ops
       uses: actions/checkout@v2

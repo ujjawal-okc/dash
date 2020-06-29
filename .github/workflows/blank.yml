@@ -23,6 +23,7 @@ env:
   GITHUB_BASE_REF: ${{ github.base_ref }}
   GITHUB_WORKSPACE: ${{ github.workspace }}
   GITHUB_ACTION: ${{ github.action }}
+  GCR_REPO: format('{0}/{1}', secrets.GCR_PROJECT, github.event.repository.name)
   
 jobs:
   job1:
@@ -30,10 +31,10 @@ jobs:
     runs-on: ubuntu-18.04
       
     steps:
-    - name: Checkout Ops
-      uses: actions/checkout@v2
-      
     - name: Environment
       run: |
-        echo "::set-env name=tag::${GITHUB_SHA::8}"
+        echo "::set-env name=tag::${GITHUB_SHA::8}-$(date +%FT%H-%M)"
+  
+    - name: Checkout Ops
+      uses: actions/checkout@v2
 

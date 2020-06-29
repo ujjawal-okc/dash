@@ -37,4 +37,16 @@ jobs:
   
     - name: Checkout Ops
       uses: actions/checkout@v2
+  
+  job2:
+    name: Job2
+    runs-on: ubuntu-18.04
+      
+    steps:
+    - name: Environment
+      run: |
+        echo "::set-env name=tag::${GITHUB_SHA::8}-$(date +%FT%H-%M)"
+  
+    - name: Checkout Ops
+      uses: actions/checkout@v2
 

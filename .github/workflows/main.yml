@@ -36,6 +36,8 @@ jobs:
   merge:
     name: Automerge
     runs-on: ubuntu-18.04
+
+    needs: [danger]
     if: ${{ success() }}
 
     steps:

@@ -2,12 +2,18 @@ name: Close Issues
 
 on:
   pull_request:
-  label:
+    types:
+    - opened
+    - labeled
+    - unlabeled
+    - synchronize
 
 jobs:
   job1:
     name: Job1
     runs-on: ubuntu-18.04
+
+    if: github.event.action == 'opened' || github.event.action == 'synchronize'
       
     steps:
     - name: Setup JDK 1.8

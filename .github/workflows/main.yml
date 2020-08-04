@@ -7,7 +7,6 @@ jobs:
   job1:
     name: Job1
     runs-on: ubuntu-18.04
-    if: false
       
     steps:
     - name: Setup JDK 1.8

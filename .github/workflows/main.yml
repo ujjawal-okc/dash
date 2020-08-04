@@ -1,19 +1,34 @@
 name: Close Issues
 
 on:
-  issues:
-    types:
-      - opened
+  push:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    if: startsWith(github.event.issue.title, 'deploy')
+  danger:
+    name: Linter
+    runs-on: ubuntu-18.04
 
     steps:
-    - name: Close issue
-      uses: peter-evans/close-issue@v1
+    - name: Checkout App
+      uses: actions/checkout@v2
+
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
       with:
-        comment: |
-          Deployed branch
-          Auto-closing this issue.
+        ruby-version: '2.6'
+
+    - name: Cache Gems
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('.github/Gemfile') }}
+
+    - name: Danger Validation
+      uses: MeilCli/danger-action@v4
+      with:
+        plugins_file: '.github/Gemfile'
+        install_path: 'vendor/bundle'
+        danger_file: '.github/Dangerfile'
+        danger_id: 'danger-pr'
+      env:
+        DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}

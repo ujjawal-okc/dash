@@ -2,7 +2,11 @@ name: Close Issues
 
 on:
   pull_request:
-  label:
+    types:
+    - opened
+    - labeled
+    - unlabeled
+    - synchronize
 
 jobs:
   job1:

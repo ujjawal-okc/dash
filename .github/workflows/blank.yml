@@ -1,9 +1,14 @@
 name: Build and Deploy
 
-on:
-  push:
-    branches: 
-      - master
+on: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'  
   
 jobs:
   job1:
@@ -16,8 +21,4 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    
-    - name: Echo
-      run: |
-        echo $ANDROID_SDK_ROOT
 
